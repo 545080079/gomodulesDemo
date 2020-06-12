@@ -4,6 +4,7 @@ import (
 	"demo/controller"
 	"fmt"
 	"github.com/smartystreets/goconvey/convey"
+	"math"
 	"math/rand"
 	"testing"
 )
@@ -25,15 +26,21 @@ func TestSession_Get(t *testing.T) {
 func TestSession_Set(t *testing.T) {
 
 	convey.Convey("Try to Set Session(300): ", t, func() {
+		convey.Convey("task 1", func() {
 
-		var client controller.Client
-		sess := Session{
-			client,
-		}
-		token, err := sess.Set(123)
-		convey.So(err, convey.ShouldBeNil)
-		convey.So(token, convey.ShouldNotBeEmpty)
+			var client controller.Client
+			sess := Session{
+				client,
+			}
+			token, err := sess.Set(123)
+			convey.So(err, convey.ShouldBeNil)
+			convey.So(token, convey.ShouldNotBeEmpty)
+		})
 
+		convey.Convey("task 2", func() {
+			sum := math.Abs(-1)
+			convey.So(sum,convey.ShouldEqual, 1)
+		})
 	})
 
 }
